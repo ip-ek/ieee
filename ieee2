@@ -1,0 +1,41 @@
+#include<stdio.h>
+//#include<conio.h>
+
+int asal_mi(int);
+int main(){
+	int i, kucuk, buyuk, toplam=0;
+	printf("*iki sayi arasindaki(sinirlar dahil) asal sayilarin toplamini bulan program*\n");
+	do{
+		i=1;
+		printf("\nLutfen araligin kucuk sinirini giriniz: ");		//kucuk ve buyuk degerlerin 2den kucuk olmadıgı goz onunde bulundurulmustur.	
+		scanf("%d", &kucuk);
+		printf("\nLutfen araligin buyuk sinirini giriniz: ");
+		scanf("%d", &buyuk);
+		if(kucuk>buyuk){
+			printf("\nHATALI GIRIS!!!\n%d, %d'den kucuk degildir. Lutfen yeniden sayi giriniz.\n");
+			i=0;
+		}
+	}while(!i);
+	
+	for(i=kucuk; i<=buyuk; i++){
+		toplam+=asal_mi(i);
+	}
+	
+	printf("\nToplam: %d", toplam);
+	
+	//getch();
+	return 0;
+}
+
+int asal_mi(int sayi){
+	int i=2, pound=0;
+	while(i<=sayi/2 && pound==0){	//sayiyi bolen bulunmadigi ve yarisindan kucuk oldugu surece doner
+		if(sayi%i==0){				
+			pound=1;				//sayiyi bolen bulundu.
+		}	
+		i++;
+	}
+//	printf("\n%d icin pound %d ",sayi,pound );
+	if(pound==0) return sayi;
+	else return 0;
+}
